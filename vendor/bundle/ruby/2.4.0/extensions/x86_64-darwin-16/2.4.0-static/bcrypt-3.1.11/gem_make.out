@@ -1,0 +1,20 @@
+current directory: /Users/ishizakitakukai/todospace/vendor/bundle/ruby/2.4.0/gems/bcrypt-3.1.11/ext/mri
+/Users/ishizakitakukai/.rbenv/versions/2.4.0/bin/ruby -r ./siteconf20180124-1271-cowg6r.rb extconf.rb
+creating Makefile
+
+current directory: /Users/ishizakitakukai/todospace/vendor/bundle/ruby/2.4.0/gems/bcrypt-3.1.11/ext/mri
+make "DESTDIR=" clean
+
+current directory: /Users/ishizakitakukai/todospace/vendor/bundle/ruby/2.4.0/gems/bcrypt-3.1.11/ext/mri
+make "DESTDIR="
+compiling bcrypt_ext.c
+2018-01-24 09:12:48.767 xcodebuild[1311:102409] [MT] PluginLoading: Required plug-in compatibility UUID B395D63E-9166-4CD6-9287-6889D507AD6A for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/RealmPlugin.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+compiling crypt.c
+compiling crypt_blowfish.c
+compiling crypt_gensalt.c
+compiling wrapper.c
+linking shared-object bcrypt_ext.bundle
+
+current directory: /Users/ishizakitakukai/todospace/vendor/bundle/ruby/2.4.0/gems/bcrypt-3.1.11/ext/mri
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bcrypt_ext.bundle ./.gem.20180124-1271-1aus8nz
