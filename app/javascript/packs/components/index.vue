@@ -1,6 +1,7 @@
 <template>
   <div>
     <!-- 新規作成部分 -->
+    <h1 id = "user" value = " user.email ">Hi!!{{ user.email }}!!</h1>
     <div class="row margin-default">
       <div class="col s10 m11">
         <input v-model="newTask" id="new-task-form" class="form-control padding-default" placeholder="Add your task!!">
@@ -16,7 +17,7 @@
       <ul class="collection">
         <li v-bind:id="'row_task_' + task.id" class="collection-item" v-for="task in tasks" v-if="!task.is_done">
           <input type="checkbox" v-bind:id="'task_' + task.id" v-on:change="doneTask(task.id)" />
-          <label v-bind:for="'task_' + task.id" class="word-color-black">{{ task.name }}</label>
+          <label v-bind:for="'task_' + task.id" class="word-color-black">{{ task.name }}({{ task.email }})</label>
         </li>
       </ul>
     </div>
@@ -35,16 +36,21 @@
 </template>
 
 <script>
+
   import axios from 'axios';
   export default {
     data: function () {
       return {
         tasks: [],
-        newTask: ''
+        newTask: '',
+        currentMail: '',
+        user: ''
       }
     },
     mounted: function () {
       this.fetchTasks();
+      this.fetchUsers();
+      console.log(this.currentMail);
     },
     methods: {
       fetchTasks: function () {
@@ -56,9 +62,16 @@
           console.log(error);
         });
       },
+      fetchUsers: function () {
+        axios.get('/api/users').then((response) => {
+          this.user = response.data.users[0]
+        }, (error) => {
+          console.log(error);
+        });
+      },
       createTask: function () {
         if (!this.newTask) return;
-        axios.post('/api/tasks', { task: { name: this.newTask } }).then((response) => {
+        axios.post('/api/tasks', { task: { name: this.newTask, email: this.user.email } }).then((response) => {
           this.tasks.unshift(response.data.task);
           this.newTask = '';
         }, (error) => {

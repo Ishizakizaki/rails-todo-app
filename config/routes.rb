@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   namespace :api, format: 'json' do
     resources :tasks, only: [:index, :create, :update]
   end
+  namespace :api, format: 'json' do
+    resources :users, only: [:index, :create, :update]
+  end
 end

@@ -11,7 +11,7 @@
   <body>
     <%= yield %>
     <% if user_signed_in? %>
-    <p class="btn btn-custom" style="margin-left: 190px; background-color: #fff;"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
-  <% end %>
+      <p class="btn btn-custom" style="margin-left: 190px; background-color: #fff;"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
+    <% end %>
   </body>
 </html>
